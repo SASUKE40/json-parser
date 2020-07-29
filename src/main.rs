@@ -20,7 +20,7 @@ pub struct Context<'a> {
     pub output: &'a String,
 }
 
-impl JsonWriter for Context {
+impl JsonWriter for Context<'_> {
     fn indent(&mut self) {
         self.indent += 2
     }
@@ -48,8 +48,8 @@ impl JsonWriter for Context {
     }
 }
 
-impl Context {
-    fn new() -> Context {
+impl Context<'_> {
+    fn new() -> Context<'static> {
         Context {
             indent: 0,
             compact: false,
